@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navb{
+    @apply text-lg no-underline text-gray-900 hover:text-neutral-400 ml-2;
+}

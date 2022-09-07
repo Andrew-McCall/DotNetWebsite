@@ -50,7 +50,7 @@ namespace andrew_mccall
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Admin}/{action=home}");
             });
 
 
@@ -59,6 +59,7 @@ namespace andrew_mccall
             {
                 endpoints.MapRazorPages();
             });
+
         }
     }
 }
