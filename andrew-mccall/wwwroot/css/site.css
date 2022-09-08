@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 .navb{
-    @apply text-lg no-underline text-gray-900 hover:text-neutral-400 ml-2;
+    @apply text-lg no-underline text-neutral-900 hover:text-emerald-500 ml-2;
+}
+
+.custombg{
+    background-image: linear-gradient(to bottom right, #000000,#0f100a,  #171717, #292524, #059669,#10b981);
 }

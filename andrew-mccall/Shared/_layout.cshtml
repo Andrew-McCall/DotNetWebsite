@@ -7,28 +7,31 @@
     <link rel="/favicon.ico">
     <title>@ViewData["Title"]</title>
 </head>
-<body>
 
-    <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+<body class="mb-12 h-screen bg-fixed bg-center bg-cover custombg"> 
+    <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-emerald-800 sm:items-baseline w-full">
         <div class="mb-2 sm:mb-0">
-           <a href="/"><h1 class="text-2xl no-underline text-gray-900 hover:text-neutral-700">Andrew McCall</h1></a>
+           <a href="/"><h1 class="text-2xl underline text-neutral-900 hover:text-emerald-600">Andrew McCall</h1></a>
         </div>
         <div>
-            <a href="/github" class="navb">GitHub</a>
-            <a href="/gimmicks" class="navb">Demo</a>
+            <a href="https://github.com/Andrew-McCall" target="_blank" class="navb">GitHub</a>
+            <a href="/projects/list" class="navb">Projects</a>
             <a href="/contact" class="navb">Contact</a>
         </div>
     </nav>
 
-    <div class="align-middle">
+    <div>
+
         @RenderBody()
+
+
+        <hr class="m-2 border-stone-900"/>
+        <footer class="sticky top-[100vh] text-center align-middle">
+          <p class="text-xs">&copy; 2022 - AMcCall</p>
+        </footer>
+        
     </div>
-
-    <hr />
-
-    <footer>
-        <p>&copy; 2022 - AMcCall</p>
-    </footer>
+    
 
     @RenderSection("Scripts", required: false)
 

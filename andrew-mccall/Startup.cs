@@ -9,8 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 namespace andrew_mccall
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -30,6 +32,7 @@ namespace andrew_mccall
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -46,13 +49,14 @@ namespace andrew_mccall
 
             app.UseAuthorization();
 
+
+            //MVC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Admin}/{action=home}");
             });
-
 
             // Razor
             app.UseEndpoints(endpoints =>
