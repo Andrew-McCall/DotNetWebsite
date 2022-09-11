@@ -4,14 +4,15 @@
     <RootNamespace>andrew_mccall</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <UpToDateCheckBuilt Include="wwwroot/css/styles.css" Set="Css"/>
-    <UpToDateCheckBuilt Include="postcss.config.js" Set="Css"/>
-    <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css"/>
+    <UpToDateCheckBuilt Include="wwwroot/css/styles.css" Set="Css" />
+    <UpToDateCheckBuilt Include="postcss.config.js" Set="Css" />
+    <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.17.1"/>
+    <PackageReference Include="MongoDB.Driver" Version="2.17.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
   <Target Name="Tailwind" BeforeTargets="Build">
-    <Exec Command="npm run style:build"/>
+    <Exec Command="npm run style:build" />
   </Target>
 </Project>
