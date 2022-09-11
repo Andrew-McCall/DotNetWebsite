@@ -18,7 +18,7 @@ namespace andrew_mccall.DAO
         }
 
         private Project ModelProjectFromBson(BsonDocument document){
-            return new Project(document.GetValue("Title").ToString(),document.GetValue("Description").ToString(),document.GetValue("Link").ToString(),document.GetValue("Image").ToString(),document.GetValue("Demo").ToBoolean());
+            return new Project(document.GetValue("_id").AsObjectId,document.GetValue("Title").ToString(),document.GetValue("Description").ToString(),document.GetValue("Link").ToString(),document.GetValue("Image").ToString(),document.GetValue("Demo").ToBoolean());
         }
 
         public List<Project> GetAll(){

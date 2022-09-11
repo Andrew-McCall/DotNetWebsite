@@ -33,11 +33,11 @@ namespace andrew_mccall.Controllers
                 return Unauthorized("You must provide the key to create!");
             }
 
-            if (project == new Project()){
+            if (project == null || project.Title == null || project.Description == null || project.Link == null || project.Image == null ){
                 return BadRequest(project);
             }
 
-            projectDAO.create(project);
+            projectDAO.Create(project);
 
             return Ok(project);
         }
