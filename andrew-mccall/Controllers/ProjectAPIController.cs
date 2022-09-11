@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,8 +23,23 @@ namespace andrew_mccall.Controllers
 
         [HttpGet("Projects/GetAll")]
         public IActionResult GetAll(){
-            projectDAO.GetAll();
-            return Ok("lol");
+            return Ok(projectDAO.GetAll());
+        }
+        
+        [HttpPut("Projects/Create")]
+        public IActionResult Create(String key, [FromBody] Project project){
+
+            if (!key.Equals(ConfigurationManager.AppSettings["API_MASTER_KEY"])){
+                return Unauthorized("You must provide the key to create!");
+            }
+
+            if (project == new Project()){
+                return BadRequest(project);
+            }
+
+            projectDAO.create(project);
+
+            return Ok(project);
         }
 
     }
