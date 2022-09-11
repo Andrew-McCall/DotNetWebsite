@@ -22,13 +22,8 @@ namespace andrew_mccall.Controllers
 
         [HttpGet("Projects/GetAll")]
         public IActionResult GetAll(){
-            projectDAO.Create(new Project("Title", "Description", "Link", "Image", false));
             projectDAO.GetAll();
             return Ok("lol");
-        }
-
-        public IActionResult Create(){
-            
         }
 
     }
