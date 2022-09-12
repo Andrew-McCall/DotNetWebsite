@@ -2,13 +2,13 @@ using System;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using andrew_mccall.Database;
-using andrew_mccall.Entites;
+
 
 namespace andrew_mccall.Entites
 {   
-    public class CatPicture {
-
-        public ObjectId Id {get; set;}
+    public class CatPicture{
+        
+        public ObjectId Id { get; set; }
 
         public string url { get; set; }
 

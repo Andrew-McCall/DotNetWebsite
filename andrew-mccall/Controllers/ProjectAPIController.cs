@@ -37,9 +37,35 @@ namespace andrew_mccall.Controllers
                 return BadRequest(project);
             }
 
-            projectDAO.Create(project);
+            return Ok(projectDAO.Create(project));
+        }
 
-            return Ok(project);
+        [HttpPost("Projects/Update")]
+        public IActionResult Update(String key, [FromBody] Project project){
+
+            if (!key.Equals(ConfigurationManager.AppSettings["API_MASTER_KEY"])){
+                return Unauthorized("You must provide the key to update!");
+            }
+
+            if (project == null || project.Title == null || project.Description == null || project.Link == null || project.Image == null ){
+                return BadRequest(project);
+            }
+
+            return Ok(projectDAO.Update(project));
+        }
+
+        [HttpDelete("Projects/Delete")]
+        public IActionResult Delete(String key, String id){
+
+            if (!key.Equals(ConfigurationManager.AppSettings["API_MASTER_KEY"])){
+                return Unauthorized("You must provide the key to update!");
+            }
+
+            if (string.IsNullOrEmpty(id)){
+                return BadRequest("Id missing (Url Paramater)");
+            }
+
+            return Ok(projectDAO.Delete(id));
         }
 
     }
