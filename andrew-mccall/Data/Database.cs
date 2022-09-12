@@ -24,10 +24,6 @@ namespace andrew_mccall.Database
         public IMongoDatabase GetDatabase(String name){
             return this.client.GetDatabase(name);
         }
-
-        public IMongoCollection<BsonDocument> GetCollection(String collection, String database){
-            return this.client.GetDatabase(database).GetCollection<BsonDocument>(collection);
-        }
-
+        
     }
 }

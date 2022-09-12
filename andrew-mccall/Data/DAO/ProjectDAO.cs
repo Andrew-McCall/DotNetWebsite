@@ -10,30 +10,21 @@ namespace andrew_mccall.DAO
 {   
     public class ProjectDAO{
 
-        private IMongoCollection<BsonDocument> projectsCollection;
+        private IMongoCollection<Project> projectsCollection;
 
         public ProjectDAO(){
             Mongo db = new Mongo();
-            projectsCollection = db.GetCollection("Projects", "AndrewMcCall");
-        }
-
-        private Project ModelProjectFromBson(BsonDocument document){
-            return new Project(document.GetValue("_id").AsObjectId,document.GetValue("Title").ToString(),document.GetValue("Description").ToString(),document.GetValue("Link").ToString(),document.GetValue("Image").ToString(),document.GetValue("Demo").ToBoolean());
+            projectsCollection = db.GetDatabase("AndrewMcCall").GetCollection<Project>("Projects");
         }
 
         public List<Project> GetAll(){
-            List<Project> projects = new List<Project>();
-            foreach(BsonDocument bson in projectsCollection.AsQueryable()){
-                projects.Add(ModelProjectFromBson(bson));
-            }
-            return projects;
+            return projectsCollection.AsQueryable().ToList();
         }
 
-        public void Create(Project project){
+        public Project Create(Project project){
 
-            BsonDocument document = new BsonDocument { {"Title", project.Title}, {"Description", project.Description}, {"Link", project.Link}, {"Image", project.Image}, {"Demo", project.Demo} };
-            projectsCollection.InsertOne(document);
-
+            projectsCollection.InsertOne(project);
+            return project;
         }
 
     }

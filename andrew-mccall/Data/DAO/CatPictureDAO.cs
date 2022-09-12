@@ -9,26 +9,20 @@ namespace andrew_mccall.DAO
 {   
     public class CatPictureDAO{
 
-        private IMongoCollection<BsonDocument> catCollection;
+        private IMongoCollection<CatPicture> catCollection;
 
         public CatPictureDAO(){
             Mongo db = new Mongo();
-            catCollection = db.GetCollection("CatPictures", "AndrewMcCall");
-        }
+            catCollection = db.GetDatabase("AndrewMcCall").GetCollection<CatPicture>("CatPictures");
 
-        private CatPicture ModelCatFromBson(BsonDocument document){
-            return new CatPicture(document.GetValue("url").ToString());
         }
 
         public CatPicture getRandom(){
-            BsonDocument document = catCollection.AsQueryable().Sample(1).First<BsonDocument>();
-
-            return ModelCatFromBson(document);
+            return catCollection.AsQueryable().Sample(1).First();
         }
 
         public void Create(CatPicture catPicture){
-            BsonDocument document = new BsonDocument { {"url", catPicture.url} };
-            catCollection.InsertOne(document);
+            catCollection.InsertOne(catPicture);
         }
 
     }
