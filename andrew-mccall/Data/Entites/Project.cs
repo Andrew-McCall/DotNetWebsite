@@ -23,18 +23,7 @@ namespace andrew_mccall.Entites
         public String Image { get; set; }
         [BsonRequired]
         public Boolean Demo {get; set; }
-
-        public Project(){}
-
-        public Project(String Id, String Title, String Description, String Link, String Image, Boolean Demo)
-        {
-            this.Id= Id;
-            this.Title = Title;
-            this.Description = Description;
-            this.Link = Link;
-            this.Image = Image;
-            this.Demo = Demo;
-        }
-
+        [BsonRequired]
+        public DateTime Time {get; set; }
     }
 }

@@ -21,6 +21,8 @@ namespace andrew_mccall.Controllers
             _logger = logger;
         }
 
+
+        /// Public ///
         [HttpGet("Projects/GetAll")]
         public IActionResult GetAll(){
             return Ok(projectDAO.GetAll());
@@ -35,6 +37,8 @@ namespace andrew_mccall.Controllers
             return Ok(projectDAO.GetOne(id));
         }
         
+
+        /// Protected ///
         [HttpPut("Projects/Create")]
         public IActionResult Create(String key, [FromBody] Project project){
 
@@ -42,7 +46,7 @@ namespace andrew_mccall.Controllers
                 return Unauthorized("You must provide the key to create!");
             }
 
-            if (project == null || project.Title == null || project.Description == null || project.Link == null || project.Image == null ){
+            if (project == null || project.Title == null || project.Description == null || project.Link == null || project.Image == null){
                 return BadRequest(project);
             }
 

@@ -32,6 +32,10 @@ namespace andrew_mccall.DAO
             return projectsCollection.AsQueryable().ToList();
         }
 
+        public List<Project> GetAllByTime(){
+            return projectsCollection.AsQueryable().OrderByDescending(p=>p.Time).ToList();
+        }
+
         public Project GetOne(String Id){
             return projectsCollection.Find(x => x.Id == Id).FirstOrDefault();
         }
