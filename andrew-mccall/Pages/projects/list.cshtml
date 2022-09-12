@@ -1,5 +1,21 @@
 @page
+@using andrew_mccall.DAO;
+@using andrew_mccall.Entites;
 @{
     ViewData["Title"] = "Demos";
     Layout = "~/Shared/_layout.cshtml";
+    ProjectDAO projectDAO = new ProjectDAO();
 }
+
+<div class="gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 m-5 text-center">
+    @foreach (Project p in projectDAO.GetAll())
+    {
+        <div class="@("container rounded-xl shadow-lg shadow-stone-900 " + (p.Demo ? "bg-stone-600" : "bg-emerald-600"))">
+            <a href=@p.Link>
+                <h2 class="underline m-1">@p.Title</h2>
+                <img class="rounded-2xl px-2 overflow-hidden" src=@p.Image/>
+                <p class="m-1 text-sm">@p.Description</p>
+            </a>
+        </div>
+    }
+</div>

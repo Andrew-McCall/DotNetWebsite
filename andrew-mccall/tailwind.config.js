@@ -3,10 +3,7 @@ module.exports = {
   content: [ 
     './Pages/**/*.cshtml',
     './Views/**/*.cshtml',
-    './Shared/**/*.cshtml'
+    './Shared/**/*.cshtml',
   ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  plugins: [require("postcss"), require("autoprefixer")]
 }
