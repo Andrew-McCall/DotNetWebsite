@@ -25,6 +25,15 @@ namespace andrew_mccall.Controllers
         public IActionResult GetAll(){
             return Ok(projectDAO.GetAll());
         }
+
+        [HttpGet("Projects/GetOne")]
+        public IActionResult GetOne(String id){
+            if (string.IsNullOrEmpty(id)){
+                return BadRequest("Id missing (Url Paramater)");
+            }
+            
+            return Ok(projectDAO.GetOne(id));
+        }
         
         [HttpPut("Projects/Create")]
         public IActionResult Create(String key, [FromBody] Project project){
