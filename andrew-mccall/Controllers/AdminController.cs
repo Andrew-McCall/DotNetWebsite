@@ -23,6 +23,16 @@ namespace andrew_mccall.Controllers
             return View();
         }
 
+        public IActionResult Home(String Login){
+            
+            if (string.IsNullOrEmpty(Login)){
+                return Redirect("/admin");
+            }
+            Console.WriteLine(Login);
+
+            return View();
+
+        }
         // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         // public IActionResult Error()
         // {
