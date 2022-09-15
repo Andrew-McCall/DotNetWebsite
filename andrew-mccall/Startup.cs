@@ -55,13 +55,14 @@ namespace andrew_mccall
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Admin}/{action=home}");
+                    pattern: "{controller=Admin}/{action=login}");
             });
 
             // Razor
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+
             });
 
         }
