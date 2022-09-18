@@ -18,6 +18,8 @@ namespace andrew_mccall.Controllers
             _logger = logger;
         }
 
+        
+
         public IActionResult Login()
         {
             return View();

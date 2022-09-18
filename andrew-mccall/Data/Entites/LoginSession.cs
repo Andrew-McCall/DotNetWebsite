@@ -8,29 +8,22 @@ using System.Security.Cryptography;
 
 namespace andrew_mccall.Entites
 {   
-    public class Login{
+    public class LoginSession{
         
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public String Id {get; set;}
 
         [BsonRequired]
-        public String Username {get; set}
+        public String LoginId {get; set}
         [BsonRequired]
-        public String Password {get; set}
-        [BsonRequired]
-        public AccessEnum Access {get; set}
+        public String Token {get; set}
 
-        [BsonIgnore]
-        public Boolean isHashed {get; set}
-
-        public void hashPassword(){
-            if (this.isHashed || String.IsNullOrEmpty(text))
-            return;
+        static String GenerateToken(){
 
             using (var sha = new System.Security.Cryptography.SHA256Managed())
             {
-                byte[] textData = System.Text.Encoding.UTF8.GetBytes(Password);
+                byte[] textData = System.Text.Encoding.UTF8.GetBytes(LoginId + DateTime.UtcNow().ToString());
                 byte[] hash = sha.ComputeHash(textData);
                 this.Password = BitConverter.ToString(hash).Replace("-", String.Empty);
             }
