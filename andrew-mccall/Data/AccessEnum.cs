@@ -1,8 +1,8 @@
 namespace andrew_mccall.Data
 {
-    public enum Access
+    public enum AccessEnum
     {
         ReadOnly,
-        Admin,
+        Admin
     }
 }

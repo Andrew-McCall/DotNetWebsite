@@ -15,19 +15,29 @@ namespace andrew_mccall.Entites
         public String Id {get; set;}
 
         [BsonRequired]
-        public String LoginId {get; set}
+        public String LoginId {get; set;}
         [BsonRequired]
-        public String Token {get; set}
+        public String Token {get; set;}
 
-        static String GenerateToken(){
+        public LoginSession(String LoginId){
+            this.LoginId = LoginId;
+            GenerateThisToken();
+        }
+
+        public static String GenerateToken(String loginId){
 
             using (var sha = new System.Security.Cryptography.SHA256Managed())
             {
-                byte[] textData = System.Text.Encoding.UTF8.GetBytes(LoginId + DateTime.UtcNow().ToString());
+                byte[] textData = System.Text.Encoding.UTF8.GetBytes(loginId + DateTime.UtcNow.ToString());
                 byte[] hash = sha.ComputeHash(textData);
-                this.Password = BitConverter.ToString(hash).Replace("-", String.Empty);
+                return BitConverter.ToString(hash).Replace("-", String.Empty);
             }
         }
 
+        public void GenerateThisToken(){
+
+            this.Token = GenerateToken(LoginId);
+
+        }
     }
 }

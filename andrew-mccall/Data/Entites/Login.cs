@@ -15,17 +15,17 @@ namespace andrew_mccall.Entites
         public String Id {get; set;}
 
         [BsonRequired]
-        public String Username {get; set}
+        public String Username {get; set;}
         [BsonRequired]
-        public String Password {get; set}
+        public String Password {get; set;}
         [BsonRequired]
-        public AccessEnum Access {get; set}
+        public AccessEnum Access {get; set;}
 
         [BsonIgnore]
-        public Boolean isHashed {get; set}
+        public Boolean isHashed {get; set;}
 
         public void hashPassword(){
-            if (this.isHashed || String.IsNullOrEmpty(text))
+            if (this.isHashed || string.IsNullOrEmpty(this.Password))
             return;
 
             using (var sha = new System.Security.Cryptography.SHA256Managed())
@@ -34,6 +34,10 @@ namespace andrew_mccall.Entites
                 byte[] hash = sha.ComputeHash(textData);
                 this.Password = BitConverter.ToString(hash).Replace("-", String.Empty);
             }
+        }
+
+        public LoginSession GenerateSession(){
+            return new LoginSession(Id);
         }
 
     }
