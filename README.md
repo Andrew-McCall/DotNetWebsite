@@ -1,15 +1,15 @@
 # DotNetWebsite
 
 ## Description
-Hopefully a webiste for personal use. Plans aren't in stone (Neither are updates). I used Mongo since I have services already setup and most tech is for fun. 
+Hopefully a webiste for personal use. Plans aren't in stone (Neither are updates). I used Mongo since I have services already setup and most tech choices are for fun. 
 
 > This is not intented to be an actual product or stack.
 
 ## Setup
 ### Technologies
-DotNot (Blazer)
-MongoDB
-Tailwind CSS
+DotNot (Blazer)  
+MongoDB  
+Tailwind CSS  
 
 ### Running Requirements
  - MongoDB, currently hosted locally
